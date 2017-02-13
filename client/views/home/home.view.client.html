@@ -1,0 +1,112 @@
+<div class="row">
+    <nav class="blue darken-1">
+        <div class="nav-wrapper container">
+            <a href="#!" class="brand-logo">Hangman</a>
+            <ul class="right hide-on-med-and-down">
+
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <!--Show the no of games won-->
+        <div class="col s3">
+            <h5>Won <i class="fa fa-smile-o fa-2x" aria-hidden="true"></i> {{model.games_won}} </h5>
+        </div>
+        <!--Show the no of games lost-->
+        <div class="col s3">
+            <h5>Lost <i class="fa fa-frown-o fa-2x" aria-hidden="true"></i> {{model.games_lost}} </h5>
+        </div>
+        <!--Show the no of failed attempts-->
+        <div class="col s3">
+            <h5>Attempts <i class="fa fa-tachometer fa-2x" aria-hidden="true"></i> {{model.attempts}}/10 </h5>
+        </div>
+    </div>
+    <!--Start a new game-->
+    <div class="row">
+        <div class="col s6">
+            <a class="waves-effect waves-light btn" ng-click="model.new_game()">New Game</a>
+        </div>
+    </div>
+    <div class ="row">
+        <div class="col s6">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <!--Show the word-->
+        <div class="col s12 m6 offset-m3">
+            <ul class="example-animate-container" id ="my-word">
+                <li class="animate-repeat"  ng-repeat="letter in model.guessedWordSoFar track by $index">
+                    {{letter}}
+                </li>
+            </ul>
+
+        </div>
+        <!--Show the hangman-->
+        <div class="col s12 m6 offset-m3">
+            <canvas id="myCanvas" width="400" height="400" style="border:1px solid #d3d3d3;">
+                Your browser does not support the HTML5 canvas tag.</canvas>
+        </div>
+
+    </div>
+
+
+    <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn" href="#modal1" id="modal11">Modal</a>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>You {{model.gameState}}</h4>
+            <p>Start another game.</p>
+        </div>
+        <div class="modal-footer">
+            <a ng-click="model.new_game()" class=" modal-action modal-close waves-effect waves-green btn-flat">New Game</a>
+        </div>
+    </div>
+
+
+    <!--Show the letters-->
+    <div class="container">
+        <div class="row">
+            <a ng-click="model.letter_pressed('A')" id="A" class="waves-effect blue waves-light btn">A</a>
+            <a ng-click="model.letter_pressed('B')" id="B" class="waves-effect blue waves-light btn">B</a>
+            <a ng-click="model.letter_pressed('C')" id="C" class="waves-effect blue waves-light btn">C</a>
+            <a ng-click="model.letter_pressed('D')" id="D" class="waves-effect blue waves-light btn">D</a>
+            <a ng-click="model.letter_pressed('E')" id="E" class="waves-effect blue waves-light btn">E</a>
+        </div>
+        <div class="row">
+            <a ng-click="model.letter_pressed('F')" id ="F" class="waves-effect blue waves-light btn">F</a>
+            <a ng-click="model.letter_pressed('G')" id ="G" class="waves-effect blue waves-light btn">G</a>
+            <a ng-click="model.letter_pressed('H')" id ="H" class="waves-effect blue waves-light btn">H</a>
+            <a ng-click="model.letter_pressed('I')" id ="I" class="waves-effect blue waves-light btn">I</a>
+            <a ng-click="model.letter_pressed('J')" id ="J" class="waves-effect blue waves-light btn">J</a>
+        </div>
+        <div class="row">
+            <a ng-click="model.letter_pressed('K')" id ="K" class="waves-effect blue waves-light btn">K</a>
+            <a ng-click="model.letter_pressed('L')" id ="L" class="waves-effect blue waves-light btn">L</a>
+            <a ng-click="model.letter_pressed('M')" id ="M" class="waves-effect blue waves-light btn">M</a>
+            <a ng-click="model.letter_pressed('N')" id ="N" class="waves-effect blue waves-light btn">N</a>
+            <a ng-click="model.letter_pressed('O')" id ="O" class="waves-effect blue waves-light btn">O</a>
+        </div>
+        <div class="row">
+            <a ng-click="model.letter_pressed('P')" id ="P" class="waves-effect blue waves-light btn">P</a>
+            <a ng-click="model.letter_pressed('Q')" id ="Q" class="waves-effect blue waves-light btn">Q</a>
+            <a ng-click="model.letter_pressed('R')" id ="R" class="waves-effect blue waves-light btn">R</a>
+            <a ng-click="model.letter_pressed('S')" id ="S" class="waves-effect blue waves-light btn">S</a>
+            <a ng-click="model.letter_pressed('T')" id ="T" class="waves-effect blue waves-light btn">T</a>
+        </div>
+        <div class="row">
+            <a ng-click="model.letter_pressed('U')" id ="U" class="waves-effect blue waves-light btn">U</a>
+            <a ng-click="model.letter_pressed('V')" id ="V" class="waves-effect blue waves-light btn">V</a>
+            <a ng-click="model.letter_pressed('W')" id ="W" class="waves-effect blue waves-light btn">W</a>
+            <a ng-click="model.letter_pressed('X')" id ="X" class="waves-effect blue waves-light btn">X</a>
+            <a ng-click="model.letter_pressed('Y')" id ="Y" class="waves-effect blue waves-light btn">Y</a>
+        </div>
+        <div class="row">
+            <a ng-click="model.letter_pressed('Z')" id ="Z" class="waves-effect blue waves-light btn">Z</a>
+        </div>
+    </div>
+
+</div>
