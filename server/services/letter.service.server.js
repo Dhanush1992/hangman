@@ -2,7 +2,17 @@ module.exports = function(app){
     // List of words. Can be scaled by populating this array from a huge file of words.
     // List of words from : http://www.manythings.org/vocabulary/lists/l/words.php?f=noll15
 
-    var words = ["paris","london","new york","shanghai","bangalore","boston","acres","adult","advice","arrangement","attempt","August","Autumn","border","breeze","brick","calm","canal","Casey","cast","chose","claws","coach","constantly","contrast","cookies","customs","damage","Danny","deeply","depth","discussion","doll","donkey","Egypt","Ellen","essential","exchange","exist","explanation","facing","film","finest","fireplace","floating","folks","fort","garage","grabbed","grandmother","habit","happily","Harry","heading","hunter","Illinois","image","independent","instant","January","kids","label","Lee","lungs","manufacturing","Martin","mathematics","melted","memory","mill","mission","monkey","Mount","mysterious","neighborhood","Norway","nuts","occasionally","official","ourselves","palace","Pennsylvania","Philadelphia","plates","poetry","policeman","positive","possibly","practical","pride","promised","recall","relationship","remarkable","require","rhyme","rocky","rubbed","rush","sale","satellites","satisfied","scared","selection","shake","shaking","shallow","shout","silly","simplest","slight","slip","slope","soap","solar","species","spin","stiff","swung","tales","thumb","tobacco","toy","trap","treated","tune","University","vapor","vessels","wealth","wolf","zoo"];
+
+    var fs  = require("fs");
+    var words = fs.readFileSync("../hangman-game/hangman-med.txt").toString().split('\n');
+    console.log("wordsList="+words);
+
+
+
+
+
+
+    //var words = ["paris","london","new york","shanghai","bangalore","boston","acres","adult","advice","arrangement","attempt","August","Autumn","border","breeze","brick","calm","canal","Casey","cast","chose","claws","coach","constantly","contrast","cookies","customs","damage","Danny","deeply","depth","discussion","doll","donkey","egypt","Ellen","essential","exchange","exist","explanation","facing","film","finest","fireplace","floating","folks","fort","garage","grabbed","grandmother","habit","happily","Harry","heading","hunter","Illinois","image","independent","instant","January","kids","label","Lee","lungs","manufacturing","Martin","mathematics","melted","memory","mill","mission","monkey","Mount","mysterious","neighborhood","Norway","nuts","occasionally","official","ourselves","palace","Pennsylvania","Philadelphia","plates","poetry","policeman","positive","possibly","practical","pride","promised","recall","relationship","remarkable","require","rhyme","rocky","rubbed","rush","sale","satellites","satisfied","scared","selection","shake","shaking","shallow","shout","silly","simplest","slight","slip","slope","soap","solar","species","spin","stiff","swung","tales","thumb","tobacco","toy","trap","treated","tune","University","vapor","vessels","wealth","wolf","zoo"];
     var currentWordChosen;  // A random word is chosen from the list of words
     var guessedWordSoFar;   // Array of letters/blanks indicating the guessed word so far
     var attempts = 0;       // To keep track of no of failed attempts
@@ -27,6 +37,7 @@ module.exports = function(app){
             attempts = attempts + 1;
             if(attempts == 10){                         // if the no of attempts reach 10, game is lost
                 gamesLost = gamesLost + 1;
+                guessedWordSoFar = currentWordChosen;
             }
             if(attempts > 10){                          // reset the attempts to 0
 
@@ -80,7 +91,8 @@ module.exports = function(app){
     // and replaced string(array of letters replaced by "_") and send the array of blank characters back to client to start the game.
     function getWord(req,res){
         attempts = 0;
-        var word = words[(Math.floor(Math.random() * words.length))];
+        var word = words[(Math.floor(Math.random() * words.length))].toLowerCase();
+
         var gameString = word.replace(/\s/g, "-");
 
         currentWordChosen = gameString;

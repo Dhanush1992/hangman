@@ -29,7 +29,8 @@
     </div>
     <div class ="row">
         <div class="col s6">
-
+            <!--<input ng-keyup="event=$event">-->
+            <!--<p>event keyCode: {{ event.keyCode }}</p>-->
         </div>
     </div>
 
@@ -59,7 +60,7 @@
     <div id="modal1" class="modal">
         <div class="modal-content">
             <h4>You {{model.gameState}}</h4>
-            <p>Start another game.</p>
+            <p>The word is {{model.guessedWordSoFar}}. Start another game.</p>
         </div>
         <div class="modal-footer">
             <a ng-click="model.new_game()" class=" modal-action modal-close waves-effect waves-green btn-flat">New Game</a>

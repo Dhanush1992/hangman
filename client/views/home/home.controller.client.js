@@ -58,6 +58,7 @@
                         // Draw hangman
                         if(vm.attempts == 10){                  // If the no of attempts reach 10, the game is lost.
                             disableLetterClasses();             // Disable all letters to halt the game
+                            vm.guessedWordSoFar = guessAttempt.guessedWordSoFar;
                             vm.gameState = "Lose!!";
                             $('#modal1').modal('open');         // A modal is displayed indicating the loss
                         }
@@ -66,6 +67,7 @@
                         vm.guessedWordSoFar = guessAttempt.guessedWordSoFar;    // On a successful guess attempt, the guessedWordSoFar is updated
                         if(vm.games_won < guessAttempt.gamesWon){               // if the gamesWon count is incremented, it indicates a win
                             disableLetterClasses();                             // Disable all letters to halt the game
+                            vm.guessedWordSoFar = guessAttempt.guessedWordSoFar.join("");
                             vm.gameState = "Win!!";
                             $('#modal1').modal('open');                         // A modal is displayed indicating the win
                         }
