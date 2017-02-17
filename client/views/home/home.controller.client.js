@@ -5,6 +5,7 @@
 
     function HomeController($location, $sce, LetterService) {
         var vm = this;
+        vm.key_pressed = key_pressed;
         vm.letter_pressed = letter_pressed;
         vm.new_game = new_game;
         // list to maintain the set of classes disabled. Every time a user clicks a button,
@@ -40,6 +41,25 @@
 
                 });
         }
+        function key_pressed(event){
+            console.log(event.keyCode);
+            var key = event.keyCode;
+            var letter;
+            if(((key>64)&&(key<91))||((key>96)&&(key<127))){
+                letter = String.fromCharCode(key);
+                var doesNotContainFlag = true;
+                for(var i =0;i<disabledLetterClasses.length;i++){
+                    if(letter.toUpperCase() == disabledLetterClasses[i]){
+                        doesNotContainFlag = false;
+                    }
+                }
+                if(doesNotContainFlag){
+                    letter_pressed(letter);
+                }
+            }
+
+        }
+
 
         function letter_pressed(letter){                    // Is called every time a letter(button) is pressed on the html
 

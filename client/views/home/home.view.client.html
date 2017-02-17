@@ -29,8 +29,8 @@
     </div>
     <div class ="row">
         <div class="col s6">
-            <!--<input ng-keyup="event=$event">-->
-            <!--<p>event keyCode: {{ event.keyCode }}</p>-->
+            <!--<input ng-keyup="event=$event" maxlength="1">-->
+            <p>Enter your keyboard inputs here.</p><input ng-keyup="model.key_pressed($event)" maxlength="100">
         </div>
     </div>
 
