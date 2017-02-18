@@ -4,7 +4,7 @@ module.exports = function(app){
 
 
     var fs  = require("fs");
-    var words = fs.readFileSync("../hangman-game/hangman-med.txt").toString().split('\n');
+    var words = fs.readFileSync("../hangman/hangman-med.txt").toString().split('\n');
     console.log("wordsList="+words);
 
 
